@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, прекрасная Синьора!</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        accent: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    colors: {
+                        burgundy: {
+                            950: '#16040a',
+                            900: '#260712',
+                            800: '#3d0c1e',
+                            700: '#59132c',
+                        },
+                        gold: {
+                            200: '#fbf0c9',
+                            300: '#f5dc8c',
+                            400: '#eab308',
+                            500: '#d4af37',
+                            600: '#aa821c',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'spin-slow': 'spin 18s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Базовые стили и роскошный градиентный фон */
+        body {
+            background: radial-gradient(circle at 50% 0%, #3d0c1e 0%, #1f050e 45%, #110207 100%);
+            color: #fdf8ee;
+            overflow-x: hidden;
+        }
+
+        /* Золотой градиентный текст с переливом */
+        .gold-shimmer-text {
+            background: linear-gradient(
+                90deg,
+                #d4af37 0%,
+                #fff3c4 25%,
+                #eab308 50%,
+                #fff3c4 75%,
+                #d4af37 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 4.5s linear infinite;
+        }
+
+        /* Эффект матового стекла (Glassmorphism) */
+        .glass-card {
+            background: rgba(255, 245, 230, 0.04);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(212, 175, 55, 0.05);
+            transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 220, 140, 0.65);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Плавное появление элементов при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Анимация пламени свечи */
+        .candle-flame {
+            transform-origin: center bottom;
+            animation: flicker 1.4s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 8px #ffae00) drop-shadow(0 0 16px #ff5500);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .candle-flame.blown-out {
+            opacity: 0;
+            transform: scale(0) translateY(-10px);
+            animation: none;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); }
+            33% { transform: scale(1.06, 0.96) rotate(2deg); }
+            66% { transform: scale(0.95, 1.05) rotate(-1deg); }
+            100% { transform: scale(1.04) rotate(2deg); }
+        }
+
+        /* Дымок от задутой свечи */
+        .candle-smoke {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .candle-smoke.active {
+            animation: smokeRise 2.2s ease-out forwards;
+        }
+        @keyframes smokeRise {
+            0% { opacity: 0.8; transform: translateY(0) scale(0.8); }
+            50% { opacity: 0.5; transform: translateY(-18px) translateX(5px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-35px) translateX(-4px) scale(1.6); }
+        }
+
+        /* Магический шар удачи */
+        .fortune-orb {
+            background: radial-gradient(circle at 35% 30%, rgba(255, 243, 196, 0.55) 0%, rgba(212, 175, 55, 0.35) 30%, rgba(89, 19, 44, 0.85) 75%, rgba(22, 4, 10, 0.98) 100%);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.35), inset 0 0 30px rgba(255, 230, 150, 0.4);
+        }
+        .fortune-orb.shaking {
+            animation: orbShake 0.65s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes orbShake {
+            10%, 90% { transform: translate3d(-2px, 0, 0) scale(1.03); }
+            20%, 80% { transform: translate3d(4px, 0, 0) scale(1.05); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0) scale(1.06); }
+            40%, 60% { transform: translate3d(6px, 0, 0) scale(1.05); }
+        }
+
+        /* Анимация букв заголовка */
+        .hero-letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(25px) scale(0.9);
+            animation: letterAppear 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        @keyframes letterAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold-500/30 selection:text-gold-200">
+
+    <!-- Фоновый Canvas для золотой звёздной пыли, лепестков и фейерверков -->
+    <canvas id="celebrationCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Плавающая панель управления (Музыка и Салют) -->
+    <header class="fixed top-4 right-4 left-4 sm:left-auto z-50 flex items-center justify-between sm:justify-end gap-3">
+        <!-- Кнопка музыкального сопровождения (Web Audio API) -->
+        <button id="musicToggleBtn" onclick="toggleMusic()" class="glass-card px-4 py-2.5 rounded-full flex items-center gap-2.5 text-sm font-medium text-gold-200 hover:text-white cursor-pointer active:scale-95 transition-all">
+            <span id="musicIcon" class="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-300">
+                <!-- Иконка ноты -->
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </span>
+            <span id="musicText">Включить мелодию</span>
+        </button>
+
+        <!-- Кнопка быстрого запуска салюта -->
+        <button onclick="launchFireworksBurst(6)" class="px-4 py-2.5 rounded-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-burgundy-950 font-semibold text-sm shadow-lg shadow-gold-500/25 hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer">
+            <span>✨ Салют</span>
+        </button>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="relative z-10">
+
+        <!-- 1. ГЛАВНЫЙ ЭКРАН (HERO SECTION) -->
+        <section class="min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center relative">
+            <!-- Декоративное верхнее обращение -->
+            <div class="mb-5 inline-flex items-center gap-3 px-5 py-1.5 rounded-full border border-gold-500/30 bg-burgundy-900/50 backdrop-blur-md">
+                <span class="text-gold-400 text-xs">✦</span>
+                <span class="font-accent italic text-lg sm:text-xl tracking-widest text-gold-200 uppercase">Buon Compleanno, Cara Signora</span>
+                <span class="text-gold-400 text-xs">✦</span>
+            </div>
+
+            <!-- Главный заголовок с побуквенной анимацией -->
+            <h1 id="heroTitle" class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight max-w-5xl mx-auto mb-6 drop-shadow-[0_4px_24px_rgba(212,175,55,0.25)]">
+                <!-- Заполняется через JS для плавной анимации букв -->
+            </h1>
+
+            <!-- Изящный подзаголовок -->
+            <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-amber-100/85 font-light leading-relaxed mb-10 px-2">
+                Пусть этот особенный день наполнится сиянием улыбок, ароматом роскошных цветов, искренним восхищением и благосклонностью самой Госпожи Удачи!
+            </p>
+
+            <!-- Интерактивные кнопки открытия конверта и запуска салюта -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md sm:max-w-none">
+                <button onclick="openEnvelopeModal()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500 text-burgundy-950 font-semibold text-base sm:text-lg shadow-[0_0_30px_rgba(212,175,55,0.45)] hover:shadow-[0_0_45px_rgba(245,220,140,0.75)] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <span>Открыть золотой конверт</span>
+                </button>
+
+                <a href="#wishes" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card text-gold-200 hover:text-white font-medium text-base sm:text-lg flex items-center justify-center gap-2 cursor-pointer">
+                    <span>Пожелания удачи</span>
+                    <span class="text-gold-400">↓</span>
+                </a>
+            </div>
+
+            <!-- Декоративная подсказка скролла -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gold-300/60 text-xs tracking-widest uppercase animate-bounce">
+                <span>Листайте вниз</span>
+                <div class="w-px h-6 bg-gradient-to-b from-gold-400 to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- 2. КАРТОЧКИ ПОЖЕЛАНИЙ С 3D-НАКЛОНОМ -->
+        <section id="wishes" class="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-gold-400 text-sm tracking-[0.25em] uppercase font-medium">Искренние слова от всего сердца</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-2 gold-shimmer-text">Созвездие пожеланий для Вас</h2>
+                <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto mt-5"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Карточка 1: Удача -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        🍀
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Безграничной Удачи</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Пусть фортуна всегда улыбается Вам, открывая нужные двери в самый подходящий момент. Пусть каждое начинание венчается блестящим триумфом!
+                    </p>
+                </div>
+
+                <!-- Карточка 2: Красота и очарование -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        👑
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Королевского Сияния</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Оставайтесь всегда такой же восхитительной, утончённой и неповторимой Синьорой, чьё присутствие наполняет мир светом, грацией и вдохновением.
+                    </p>
+                </div>
+
+                <!-- Карточка 3: Счастье и любовь -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        🌹
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Любви и Нежности</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Пусть сердце согревает искренняя любовь, забота близких и тёплые встречи, а каждый день дарит поводы для счастливого блеска в глазах.
+                    </p>
+                </div>
+
+                <!-- Карточка 4: Гармония -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        🕊️
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Душевной Гармонии</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Пусть в душе всегда царят весна, лёгкость и умиротворение, а любая суета обходит стороной, уступая место радости и наслаждению жизнью.
+                    </p>
+                </div>
+
+                <!-- Карточка 5: Путешествия и открытия -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        ✨
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Ярких Впечатлений</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Пусть предстоящий год подарит незабываемые путешествия, солнечные горизонты, приятные сюрпризы и моменты, от которых захватывает дух.
+                    </p>
+                </div>
+
+                <!-- Карточка 6: Исполнение желаний -->
+                <div class="tilt-card glass-card rounded-3xl p-7 sm:p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400/25 to-gold-600/10 border border-gold-400/40 flex items-center justify-center text-3xl mb-6 shadow-inner">
+                        💫
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-gold-200 mb-3">Исполнения Мечты</h3>
+                    <p class="text-amber-100/80 leading-relaxed text-sm sm:text-base">
+                        Пусть даже самые смелые и тайные желания воплощаются в реальность легко и красиво, словно по взмаху волшебной палочки!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ИНТЕРАКТИВНЫЙ МАГИЧЕСКИЙ ШАР УДАЧИ -->
+        <section class="py-20 px-4 sm:px-8 max-w-4xl mx-auto text-center reveal">
+            <div class="glass-card rounded-[2rem] p-8 sm:p-12 relative overflow-hidden">
+                <!-- Декоративное фоновое свечение -->
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <span class="text-gold-400 text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">Оракул Фортуны</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2 mb-3 text-gold-200">Магическая Сфера Удачи</h2>
+                <p class="text-amber-100/75 text-sm sm:text-base max-w-xl mx-auto mb-10">
+                    Прикоснитесь к золотой сфере, чтобы узнать, какое особенное благословение и предсказание удачи звёзды приготовили для Вас в новом году жизни.
+                </p>
+
+                <!-- Сфера -->
+                <div class="flex flex-col items-center justify-center">
+                    <button id="fortuneOrbBtn" onclick="revealFortune()" aria-label="Получить предсказание удачи" class="fortune-orb w-56 h-56 sm:w-64 sm:h-64 rounded-full flex items-center justify-center p-6 relative cursor-pointer group transition-transform duration-300 hover:scale-105 active:scale-95">
+                        <!-- Вращающееся золотое кольцо -->
+                        <div class="absolute inset-2 rounded-full border border-dashed border-gold-300/40 animate-spin-slow pointer-events-none"></div>
+                        <div class="absolute inset-5 rounded-full border border-gold-200/20 pointer-events-none"></div>
+                        
+                        <div id="fortuneTextContainer" class="relative z-10 text-center">
+                            <span class="block text-3xl mb-2 group-hover:scale-110 transition-transform">🔮</span>
+                            <span class="font-serif italic text-lg sm:text-xl text-gold-200 leading-snug block">
+                                Нажмите, чтобы открыть судьбу
+                            </span>
+                        </div>
+                    </button>
+
+                    <button onclick="revealFortune()" class="mt-8 px-6 py-2.5 rounded-full border border-gold-400/40 text-gold-200 hover:bg-gold-500/15 text-sm font-medium transition-all cursor-pointer">
+                        ✨ Получить ещё одно предсказание
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ИНТЕРАКТИВНЫЙ ПРАЗДНИЧНЫЙ ТОРТ СО СВЕЧАМИ -->
+        <section class="py-20 px-4 sm:px-8 max-w-4xl mx-auto text-center reveal">
+            <span class="text-gold-400 text-xs sm:text-sm tracking-[0.25em] uppercase font-medium">Загадайте желание</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-2 mb-4 gold-shimmer-text">Праздничный торт для Синьоры</h2>
+            <p id="cakeInstruction" class="text-amber-100/80 text-sm sm:text-base max-w-lg mx-auto mb-8">
+                Закройте глаза на мгновение, загадайте самое заветное желание и нажмите на каждую свечу (или на кнопку ниже), чтобы задуть огоньки!
+            </p>
+
+            <!-- Контейнер торта -->
+            <div class="glass-card rounded-[2rem] p-6 sm:p-10 max-w-2xl mx-auto relative">
+                <!-- Интерактивный SVG Торт -->
+                <div class="relative w-full max-w-sm mx-auto select-none">
+                    <svg viewBox="0 0 360 280" class="w-full h-auto drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]">
+                        <defs>
+                            <linearGradient id="cakeTier1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#59132c"/>
+                                <stop offset="50%" stop-color="#7a1c3d"/>
+                                <stop offset="100%" stop-color="#450d21"/>
+                            </linearGradient>
+                            <linearGradient id="cakeTier2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#7a1c3d"/>
+                                <stop offset="50%" stop-color="#9c264f"/>
+                                <stop offset="100%" stop-color="#59132c"/>
+                            </linearGradient>
+                            <linearGradient id="goldGlaze" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fff3c4"/>
+                                <stop offset="40%" stop-color="#eab308"/>
+                                <stop offset="100%" stop-color="#aa821c"/>
+                            </linearGradient>
+                            <radialGradient id="flameGrad" cx="50%" cy="60%" r="50%">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="40%" stop-color="#ffe600"/>
+                                <stop offset="85%" stop-color="#ff7b00"/>
+                                <stop offset="100%" stop-color="#ff2a00" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Золотой поднос -->
+                        <ellipse cx="180" cy="248" rx="155" ry="18" fill="url(#goldGlaze)"/>
+                        <ellipse cx="180" cy="244" rx="145" ry="13" fill="#260712" opacity="0.5"/>
+
+                        <!-- Нижний ярус торта -->
+                        <path d="M 60 175 L 60 232 C 60 245, 300 245, 300 232 L 300 175 Z" fill="url(#cakeTier1)"/>
+                        <ellipse cx="180" cy="175" rx="120" ry="16" fill="#8c2146"/>
+                        <!-- Золотая глазурь нижнего яруса -->
+                        <path d="M 60 175 C 60 188, 300 188, 300 175 L 300 192 C 285 205, 275 185, 260 198 C 245 210, 230 186, 215 196 C 200 208, 185 186, 170 198 C 155 210, 140 186, 125 196 C 110 208, 95 186, 80 196 C 70 202, 60 190, 60 190 Z" fill="url(#goldGlaze)"/>
+
+                        <!-- Верхний ярус торта -->
+                        <path d="M 95 115 L 95 168 C 95 178, 265 178, 265 168 L 265 115 Z" fill="url(#cakeTier2)"/>
+                        <ellipse cx="180" cy="115" rx="85" ry="13" fill="#b32d5c"/>
+                        <!-- Золотая глазурь верхнего яруса -->
+                        <path d="M 95 115 C 95 125, 265 125, 265 115 L 265 128 C 252 138, 242 122, 228 132 C 214 142, 200 122, 185 133 C 170 143, 155 122, 140 132 C 125 142, 110 124, 95 129 Z" fill="url(#goldGlaze)"/>
+
+                        <!-- Декоративные жемчужины -->
+                        <g fill="#fff3c4">
+                            <circle cx="80" cy="236" r="3.5"/><circle cx="105" cy="240" r="3.5"/><circle cx="130" cy="242" r="3.5"/>
+                            <circle cx="155" cy="243" r="3.5"/><circle cx="180" cy="244" r="3.5"/><circle cx="205" cy="243" r="3.5"/>
+                            <circle cx="230" cy="242" r="3.5"/><circle cx="255" cy="240" r="3.5"/><circle cx="280" cy="236" r="3.5"/>
+                        </g>
+
+                        <!-- 5 Интерактивных свечей -->
+                        <!-- Свеча 1 -->
+                        <g class="candle-group cursor-pointer" onclick="blowCandle(0)">
+                            <rect x="118" y="72" width="8" height="40" rx="3" fill="#fff8e7"/>
+                            <path d="M 118 80 L 126 86 M 118 92 L 126 98 M 118 104 L 126 110" stroke="#d4af37" stroke-width="2"/>
+                            <line x1="122" y1="67" x2="122" y2="72" stroke="#333" stroke-width="1.5"/>
+                            <path id="flame-0" class="candle-flame" d="M 122 44 C 129 54, 129 65, 122 68 C 115 65, 115 54, 122 44 Z" fill="url(#flameGrad)"/>
+                            <circle id="smoke-0" class="candle-smoke" cx="122" cy="55" r="5" fill="#e2e8f0"/>
+                            <!-- Невидимая увеличенная область клика для удобства на мобильных -->
+                            <rect x="108" y="38" width="28" height="75" fill="transparent"/>
+                        </g>
+
+                        <!-- Свеча 2 -->
+                        <g class="candle-group cursor-pointer" onclick="blowCandle(1)">
+                            <rect x="147" y="66" width="8" height="42" rx="3" fill="#fff8e7"/>
+                            <path d="M 147 74 L 155 80 M 147 86 L 155 92 M 147 98 L 155 104" stroke="#d4af37" stroke-width="2"/>
+                            <line x1="151" y1="61" x2="151" y2="66" stroke="#333" stroke-width="1.5"/>
+                            <path id="flame-1" class="candle-flame" d="M 151 38 C 158 48, 158 59, 151 62 C 144 59, 144 48, 151 38 Z" fill="url(#flameGrad)"/>
+                            <circle id="smoke-1" class="candle-smoke" cx="151" cy="49" r="5" fill="#e2e8f0"/>
+                            <rect x="137" y="32" width="28" height="75" fill="transparent"/>
+                        </g>
+
+                        <!-- Свеча 3 (Центральная) -->
+                        <g class="candle-group cursor-pointer" onclick="blowCandle(2)">
+                            <rect x="176" y="62" width="8" height="44" rx="3" fill="#fff8e7"/>
+                            <path d="M 176 70 L 184 76 M 176 82 L 184 88 M 176 94 L 184 100" stroke="#d4af37" stroke-width="2"/>
+                            <line x1="180" y1="57" x2="180" y2="62" stroke="#333" stroke-width="1.5"/>
+                            <path id="flame-2" class="candle-flame" d="M 180 34 C 187 44, 187 55, 180 58 C 173 55, 173 44, 180 34 Z" fill="url(#flameGrad)"/>
+                            <circle id="smoke-2" class="candle-smoke" cx="180" cy="45" r="5" fill="#e2e8f0"/>
+                            <rect x="166" y="28" width="28" height="75" fill="transparent"/>
+                        </g>
+
+                        <!-- Свеча 4 -->
+                        <g class="candle-group cursor-pointer" onclick="blowCandle(3)">
+                            <rect x="205" y="66" width="8" height="42" rx="3" fill="#fff8e7"/>
+                            <path d="M 205 74 L 213 80 M 205 86 L 213 92 M 205 98 L 213 104" stroke="#d4af37" stroke-width="2"/>
+                            <line x1="209" y1="61" x2="209" y2="66" stroke="#333" stroke-width="1.5"/>
+                            <path id="flame-3" class="candle-flame" d="M 209 38 C 216 48, 216 59, 209 62 C 202 59, 202 48, 209 38 Z" fill="url(#flameGrad)"/>
+                            <circle id="smoke-3" class="candle-smoke" cx="209" cy="49" r="5" fill="#e2e8f0"/>
+                            <rect x="195" y="32" width="28" height="75" fill="transparent"/>
+                        </g>
+
+                        <!-- Свеча 5 -->
+                        <g class="candle-group cursor-pointer" onclick="blowCandle(4)">
+                            <rect x="234" y="72" width="8" height="40" rx="3" fill="#fff8e7"/>
+                            <path d="M 234 80 L 242 86 M 234 92 L 242 98 M 234 104 L 242 110" stroke="#d4af37" stroke-width="2"/>
+                            <line x1="238" y1="67" x2="238" y2="72" stroke="#333" stroke-width="1.5"/>
+                            <path id="flame-4" class="candle-flame" d="M 238 44 C 245 54, 245 65, 238 68 C 231 65, 231 54, 238 44 Z" fill="url(#flameGrad)"/>
+                            <circle id="smoke-4" class="candle-smoke" cx="238" cy="55" r="5" fill="#e2e8f0"/>
+                            <rect x="224" y="38" width="28" height="75" fill="transparent"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Кнопки управления свечами -->
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+                    <button id="blowAllBtn" onclick="blowAllCandles()" class="px-7 py-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-300 text-burgundy-950 font-semibold text-sm sm:text-base shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        🌬️ Задуть все свечи и загадать желание
+                    </button>
+                    <button id="relightBtn" onclick="relightCandles()" class="hidden px-6 py-3 rounded-full border border-gold-400/50 text-gold-200 hover:bg-gold-500/15 text-sm font-medium transition-all cursor-pointer">
+                        🔥 Зажечь свечи снова
+                    </button>
+                </div>
+
+                <!-- Финальное послание после задувания всех свечей -->
+                <div id="wishFulfilledBox" class="hidden mt-8 p-6 rounded-2xl bg-gradient-to-br from-gold-500/20 to-burgundy-900/60 border border-gold-300/50 animate-fade-in">
+                    <p class="font-serif italic text-2xl sm:text-3xl text-gold-200 mb-2">
+                        ✨ Ваше желание отправлено во Вселенную! ✨
+                    </p>
+                    <p class="text-amber-100/90 text-sm sm:text-base leading-relaxed">
+                        Пусть звёзды сойдутся самым благоприятным образом, а Удача станет Вашей верной спутницей на каждом шагу. С Днём Рождения, бесподобная Синьора!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ФУТЕР -->
+        <footer class="py-12 px-4 text-center border-t border-gold-500/15 text-gold-200/60 text-sm">
+            <p class="font-accent italic text-xl text-gold-300 mb-1">С наилучшими пожеланиями счастья, красоты и удачи</p>
+            <p>Создано специально к Вашему празднику ✨</p>
+        </footer>
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ЗОЛОТОЙ КОНВЕРТ С ПОЗДРАВЛЕНИЕМ -->
+    <div id="envelopeModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-burgundy-950/85 backdrop-blur-md transition-opacity duration-300">
+        <div class="glass-card max-w-xl w-full rounded-[2rem] p-7 sm:p-10 relative border-gold-400/50 shadow-[0_0_60px_rgba(212,175,55,0.3)] transform transition-all scale-95 opacity-0" id="envelopeContent">
+            <!-- Кнопка закрытия -->
+            <button onclick="closeEnvelopeModal()" aria-label="Закрыть поздравление" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gold-500/15 text-gold-200 hover:bg-gold-500/30 flex items-center justify-center transition-colors cursor-pointer">
+                ✕
+            </button>
+
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center text-3xl shadow-lg text-burgundy-950">
+                    💌
+                </div>
+                <span class="font-accent italic text-xl text-gold-300 tracking-wider">Личное послание</span>
+                <h3 class="font-serif text-2xl sm:text-4xl font-bold text-white mt-1 mb-5">Дорогая, прекрасная Синьора!</h3>
+                
+                <div class="space-y-4 text-amber-100/90 text-sm sm:text-base leading-relaxed font-light text-left sm:text-center">
+                    <p>
+                        В этот чудесный день хочется пожелать Вам, чтобы жизнь была похожа на изысканное итальянское кино — наполненное солнечным светом, пленительной музыкой, красотой каждого мгновения и восхищёнными взглядами!
+                    </p>
+                    <p>
+                        Пусть <span class="text-gold-300 font-medium">Госпожа Удача</span> всегда держит Вас за руку, оберегая от любых тревог и открывая перед Вами самые прекрасные горизонты. Пусть здоровье будет крепким, настроение — сияющим, а счастье — безграничным!
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gold-500/20 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="launchFireworksBurst(10)" class="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-300 text-burgundy-950 font-semibold text-sm hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+                        🎆 Ещё праздничного салюта!
+                    </button>
+                    <button onclick="closeEnvelopeModal()" class="w-full sm:w-auto px-6 py-3 rounded-full border border-gold-400/40 text-gold-200 hover:bg-gold-500/10 text-sm transition-all cursor-pointer">
+                        Вернуться к празднику
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 1. ПОБУКВЕННАЯ АНИМАЦИЯ ЗАГОЛОВКА
+         */
+        function initHeroTitle() {
+            const titleEl = document.getElementById('heroTitle');
+            const lines = [
+                { text: 'С Днём Рождения,', gold: false },
+                { text: 'прекрасная Синьора!', gold: true }
+            ];
+
+            let delayIndex = 0;
+            lines.forEach((line, lineIdx) => {
+                const lineDiv = document.createElement('div');
+                if (line.gold) {
+                    lineDiv.className = 'gold-shimmer-text mt-1 sm:mt-2';
+                }
+
+                // Разбиваем по словам, чтобы перенос строк на мобильных работал корректно
+                const words = line.text.split(' ');
+                words.forEach((word, wIdx) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = 'inline-block whitespace-nowrap';
+                    
+                    for (let char of word) {
+                        const charSpan = document.createElement('span');
+                        charSpan.textContent = char;
+                        charSpan.className = 'hero-letter';
+                        if (line.gold) {
+                            // Наследуем градиент для перелива каждой буквы
+                            charSpan.style.background = 'inherit';
+                            charSpan.style.webkitBackgroundClip = 'text';
+                            charSpan.style.backgroundClip = 'text';
+                            charSpan.style.color = 'transparent';
+                        }
+                        charSpan.style.animationDelay = `${delayIndex * 0.04}s`;
+                        delayIndex++;
+                        wordSpan.appendChild(charSpan);
+                    }
+                    lineDiv.appendChild(wordSpan);
+                    if (wIdx < words.length - 1) {
+                        const space = document.createTextNode(' ');
+                        lineDiv.appendChild(space);
+                    }
+                });
+
+                titleEl.appendChild(lineDiv);
+            });
+        }
+
+        /**
+         * 2. ИНТЕРАКТИВНЫЙ CANVAS: ЗОЛОТАЯ ПЫЛЬ, ЛЕПЕСТКИ И ФЕЙЕРВЕРКИ
+         */
+        const canvas = document.getElementById('celebrationCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let ambientParticles = [];
+        let fireworks = [];
+        let sparks = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Отслеживание курсора и касаний для интерактивности частиц
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            // Лёгкий шлейф золотых искр за курсором
+            if (Math.random() < 0.35) {
+                sparks.push(new Spark(mouse.x, mouse.y, true));
+            }
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        }, { passive: true });
+
+        // Класс фоновых частиц (золотая пыль и лепестки роз)
+        class AmbientParticle {
+            constructor() {
+                this.reset(true);
+            }
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                this.y = initial ? Math.random() * height : -20;
+                this.isPetal = Math.random() < 0.22; // 22% частиц — лепестки роз
+                this.size = this.isPetal ? (Math.random() * 5 + 4) : (Math.random() * 2.5 + 0.8);
+                this.speedY = this.isPetal ? (Math.random() * 0.9 + 0.4) : (Math.random() * 0.4 + 0.15);
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.03;
+                this.alpha = Math.random() * 0.6 + 0.25;
+                this.twinkleSpeed = Math.random() * 0.03 + 0.01;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.angle) * 0.3;
+                this.angle += this.spin;
+
+                // Реакция на курсор (мягкое отталкивание)
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 110) {
+                    const force = (110 - dist) / 110;
+                    this.x += (dx / dist) * force * 2.2;
+                    this.y += (dy / dist) * force * 2.2;
+                }
+
+                if (this.y > height + 20 || this.x < -30 || this.x > width + 30) {
+                    this.reset(false);
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                if (this.isPetal) {
+                    ctx.rotate(this.angle);
+                    ctx.fillStyle = `rgba(215, 55, 95, ${this.alpha * 0.75})`;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size * 0.55, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    const currentAlpha = this.alpha * (0.6 + 0.4 * Math.sin(Date.now() * this.twinkleSpeed));
+                    ctx.fillStyle = `rgba(255, 228, 140, ${currentAlpha})`;
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = '#eab308';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        // Класс искр фейерверка и курсора
+        class Spark {
+            constructor(x, y, isCursorTrail = false, color = null) {
+                this.x = x;
+                this.y = y;
+                this.isCursorTrail = isCursorTrail;
+                const palette = ['#fff3c4', '#eab308', '#f43f5e', '#fbbf24', '#fda4af', '#ffffff'];
+                this.color = color || palette[Math.floor(Math.random() * palette.length)];
+                
+                if (isCursorTrail) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 1.5 + 0.3;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed - 0.5;
+                    this.life = 1;
+                    this.decay = Math.random() * 0.03 + 0.025;
+                    this.size = Math.random() * 2 + 1;
+                } else {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 6.5 + 1.5;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                    this.life = 1;
+                    this.decay = Math.random() * 0.016 + 0.012;
+                    this.size = Math.random() * 3 + 1.5;
+                }
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (!this.isCursorTrail) {
+                    this.vy += 0.06; // Гравитация
+                    this.vx *= 0.97; // Сопротивление воздуха
+                    this.vy *= 0.97;
+                }
+                this.life -= this.decay;
+            }
+            draw() {
+                if (this.life <= 0) return;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.life);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Инициализация фоновых частиц
+        const particleCount = Math.min(85, Math.floor(window.innerWidth / 15));
+        for (let i = 0; i < particleCount; i++) {
+            ambientParticles.push(new AmbientParticle());
+        }
+
+        // Запуск залпа фейерверков
+        function createFireworkExplosion(x, y) {
+            const palette = ['#fff3c4', '#eab308', '#fb7185', '#fcd34d', '#f43f5e'];
+            const mainColor = palette[Math.floor(Math.random() * palette.length)];
+            const count = 55;
+            for (let i = 0; i < count; i++) {
+                sparks.push(new Spark(x, y, false, i % 3 === 0 ? '#ffffff' : mainColor));
+            }
+            playSparkleSound();
+        }
+
+        function launchFireworksBurst(burstCount = 5) {
+            for (let i = 0; i < burstCount; i++) {
+                setTimeout(() => {
+                    const rx = width * (0.15 + Math.random() * 0.7);
+                    const ry = height * (0.15 + Math.random() * 0.45);
+                    createFireworkExplosion(rx, ry);
+                }, i * 280);
+            }
+        }
+
+        // Главный цикл анимации Canvas
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let p of ambientParticles) {
+                p.update();
+                p.draw();
+            }
+
+            for (let i = sparks.length - 1; i >= 0; i--) {
+                sparks[i].update();
+                sparks[i].draw();
+                if (sparks[i].life <= 0) {
+                    sparks.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        /**
+         * 3. 3D-ЭФФЕКТ НАКЛОНА КАРТОЧЕК (TILT) И ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+         */
+        function initCardsAndScroll() {
+            // Плавное появление элементов
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // 3D-наклон для десктопов
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -7;
+                    const rotateY = ((x - centerX) / centerX) * 7;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                });
+            });
+        }
+
+        /**
+         * 4. МАГИЧЕСКАЯ СФЕРА УДАЧИ (ОРАКУЛ ПРЕДСКАЗАНИЙ)
+         */
+        const fortunes = [
+            "Удача будет сопровождать каждый Ваш шаг, превращая смелые идеи в блестящие победы!",
+            "Вас ждёт неожиданная и невероятно приятная встреча, которая подарит море вдохновения.",
+            "Самая заветная мечта уже на пороге исполнения — просто улыбнитесь навстречу счастью!",
+            "Предстоящий год принесёт Вам головокружительный успех, признание и финансовое процветание.",
+            "Вас ожидает незабываемое путешествие в место мечты, полное солнца, красоты и радости.",
+            "Фортуна приготовила для Вас роскошный сюрприз в самое ближайшее время!",
+            "Каждый день нового года будет наполнен гармонией, нежностью и восхищением окружающих.",
+            "Звёзды сулят Вам время расцвета, лёгкости и исполнения желаний по первому Вашему слову!"
+        ];
+        let lastFortuneIdx = -1;
+
+        function revealFortune() {
+            const orb = document.getElementById('fortuneOrbBtn');
+            const container = document.getElementById('fortuneTextContainer');
+
+            orb.classList.remove('shaking');
+            void orb.offsetWidth; // Перезапуск анимации
+            orb.classList.add('shaking');
+
+            playChimeSound();
+
+            // Выбираем новое предсказание, отличное от предыдущего
+            let idx;
+            do {
+                idx = Math.floor(Math.random() * fortunes.length);
+            } while (idx === lastFortuneIdx);
+            lastFortuneIdx = idx;
+
+            setTimeout(() => {
+                container.innerHTML = `
+                    <span class="block text-2xl mb-1.5">✨</span>
+                    <p class="font-serif italic text-base sm:text-lg text-gold-200 leading-snug px-2">
+                        «${fortunes[idx]}»
+                    </p>
+                `;
+                // Мини-фейерверк вокруг шара
+                const rect = orb.getBoundingClientRect();
+                createFireworkExplosion(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            }, 350);
+        }
+
+        /**
+         * 5. ИНТЕРАКТИВНЫЙ ТОРТ СО СВЕЧАМИ
+         */
+        let candlesLit = [true, true, true, true, true];
+
+        function blowCandle(index) {
+            if (!candlesLit[index]) return;
+            candlesLit[index] = false;
+
+            const flame = document.getElementById(`flame-${index}`);
+            const smoke = document.getElementById(`smoke-${index}`);
+            
+            if (flame) flame.classList.add('blown-out');
+            if (smoke) {
+                smoke.classList.remove('active');
+                void smoke.offsetWidth;
+                smoke.classList.add('active');
+            }
+
+            playBlowSound();
+            checkAllCandlesBlown();
+        }
+
+        function blowAllCandles() {
+            candlesLit.forEach((isLit, idx) => {
+                if (isLit) {
+                    setTimeout(() => blowCandle(idx), idx * 140);
+                }
+            });
+        }
+
+        function checkAllCandlesBlown() {
+            if (candlesLit.every(lit => !lit)) {
+                document.getElementById('blowAllBtn').classList.add('hidden');
+                document.getElementById('relightBtn').classList.remove('hidden');
+                document.getElementById('wishFulfilledBox').classList.remove('hidden');
+                document.getElementById('cakeInstruction').textContent = 'Все свечи задуты! Пусть Ваше желание непременно сбудется!';
+                launchFireworksBurst(8);
+            }
+        }
+
+        function relightCandles() {
+            candlesLit = [true, true, true, true, true];
+            for (let i = 0; i < 5; i++) {
+                const flame = document.getElementById(`flame-${i}`);
+                const smoke = document.getElementById(`smoke-${i}`);
+                if (flame) flame.classList.remove('blown-out');
+                if (smoke) smoke.classList.remove('active');
+            }
+            document.getElementById('blowAllBtn').classList.remove('hidden');
+            document.getElementById('relightBtn').classList.add('hidden');
+            document.getElementById('wishFulfilledBox').classList.add('hidden');
+            document.getElementById('cakeInstruction').textContent = 'Закройте глаза на мгновение, загадайте самое заветное желание и нажмите на каждую свечу, чтобы задуть огоньки!';
+        }
+
+        /**
+         * 6. МОДАЛЬНОЕ ОКНО ЗОЛОТОГО КОНВЕРТА
+         */
+        function openEnvelopeModal() {
+            const modal = document.getElementById('envelopeModal');
+            const content = document.getElementById('envelopeContent');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 20);
+
+            launchFireworksBurst(6);
+        }
+
+        function closeEnvelopeModal() {
+            const modal = document.getElementById('envelopeModal');
+            const content = document.getElementById('envelopeContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 250);
+        }
+
+        // Закрытие по клику вне карточки
+        document.getElementById('envelopeModal').addEventListener('click', (e) => {
+            if (e.target.id === 'envelopeModal') {
+                closeEnvelopeModal();
+            }
+        });
+
+        /**
+         * 7. АВТОНОМНЫЙ МУЗЫКАЛЬНЫЙ СИНТЕЗАТОР (WEB AUDIO API)
+         * Нежная праздничная мелодия и звуковые эффекты без внешних аудиофайлов
+         */
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let melodyTimer = null;
+        let noteStep = 0;
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Мягкий звук арфы / музыкальной шкатулки
+        function playBellNote(freq, duration = 0.8, volume = 0.08) {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            gain.gain.setValueAtTime(0.001, now);
+            gain.gain.exponentialRampToValueAtTime(volume, now + 0.04);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + duration);
+        }
+
+        // Нежная праздничная мелодия в стиле музыкальной шкатулки ("Happy Birthday" в изысканной аранжировке)
+        const melodySequence = [
+            { f: 261.63, d: 0.45 }, { f: 261.63, d: 0.45 }, { f: 293.66, d: 0.9 }, { f: 261.63, d: 0.9 }, { f: 349.23, d: 0.9 }, { f: 329.63, d: 1.5 },
+            { f: 261.63, d: 0.45 }, { f: 261.63, d: 0.45 }, { f: 293.66, d: 0.9 }, { f: 261.63, d: 0.9 }, { f: 392.00, d: 0.9 }, { f: 349.23, d: 1.5 },
+            { f: 261.63, d: 0.45 }, { f: 261.63, d: 0.45 }, { f: 523.25, d: 0.9 }, { f: 440.00, d: 0.9 }, { f: 349.23, d: 0.9 }, { f: 329.63, d: 0.9 }, { f: 293.66, d: 1.5 },
+            { f: 466.16, d: 0.45 }, { f: 466.16, d: 0.45 }, { f: 440.00, d: 0.9 }, { f: 349.23, d: 0.9 }, { f: 392.00, d: 0.9 }, { f: 349.23, d: 1.8 }
+        ];
+
+        function playNextMelodyNote() {
+            if (!isMusicPlaying) return;
+            const note = melodySequence[noteStep % melodySequence.length];
+            playBellNote(note.f, note.d * 1.4, 0.07);
+            // Добавляем нежную октаву для объёма
+            playBellNote(note.f * 2, note.d * 1.1, 0.02);
+            
+            noteStep++;
+            melodyTimer = setTimeout(playNextMelodyNote, note.d * 550);
+        }
+
+        function toggleMusic() {
+            ensureAudioContext();
+            isMusicPlaying = !isMusicPlaying;
+            const btnText = document.getElementById('musicText');
+            const icon = document.getElementById('musicIcon');
+
+            if (isMusicPlaying) {
+                btnText.textContent = 'Пауза мелодии';
+                icon.classList.add('animate-pulse', 'bg-gold-500/40');
+                playNextMelodyNote();
+            } else {
+                btnText.textContent = 'Включить мелодию';
+                icon.classList.remove('animate-pulse', 'bg-gold-500/40');
+                clearTimeout(melodyTimer);
+            }
+        }
+
+        // Звуковой эффект магического звона (для сферы удачи)
+        function playChimeSound() {
+            if (!audioCtx) return;
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+                setTimeout(() => playBellNote(freq, 0.9, 0.05), i * 80);
+            });
+        }
+
+        // Звуковой эффект искр салюта
+        function playSparkleSound() {
+            if (!audioCtx) return;
+            const freq = 800 + Math.random() * 600;
+            playBellNote(freq, 0.4, 0.025);
+        }
+
+        // Звуковой эффект задувания свечи
+        function playBlowSound() {
+            if (!audioCtx) return;
+            playBellNote(320, 0.25, 0.03);
+        }
+
+        /**
+         * ЗАПУСК ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+         */
+        window.onload = function () {
+            initHeroTitle();
+            initCardsAndScroll();
+            animateCanvas();
+            // Приветственный лёгкий салют при открытии страницы
+            setTimeout(() => launchFireworksBurst(3), 800);
+        };
+    </script>
+</body>
+</html>
